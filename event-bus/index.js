@@ -4,8 +4,9 @@ const axios = require('axios');
 
 const app = express();
 app.use(bodyParser.json());
+// sdasd
 
-app.post('./events', (req, res) => {
+app.post('/events', (req, res) => {
   const event = req.body;
   // tweet service
   axios.post('http://localhost:5000/events', event);
@@ -18,5 +19,5 @@ app.post('./events', (req, res) => {
 });
 
 app.listen(5005, () => {
-  console.log('Listening on port 4005');
+  console.log('Listening on port 5005');
 });
