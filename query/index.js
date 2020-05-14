@@ -21,10 +21,19 @@ app.post('/events', (req, res) => {
   }
 
   if (type === 'ReplyCreated') {
-    const { id, content, tweetId } = data;
+    const { id, content, tweetId, status } = data;
 
     const tweet = tweets[tweetId];
-    tweet.replies.push({ id, content });
+    tweet.replies.push({ id, content, status });
+  }
+  if (type === 'ReplyUpdated') {
+    const { id, content, tweetId, status } = data;
+    const tweet = tweets[tweetId];
+    const reply = tweet.replies.find((reply) => {
+      return reply.id === id;
+    });
+    reply.status = status;
+    reply.content = content;
   }
   console.log(tweets);
   res.send({});

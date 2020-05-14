@@ -14,6 +14,8 @@ app.post('/events', (req, res) => {
   axios.post('http://localhost:5001/events', event);
   // query serivces
   axios.post('http://localhost:5002/events', event);
+  // moderation serivces
+  axios.post('http://localhost:5003/events', event);
 
   res.send({ status: 'OK' });
 });
