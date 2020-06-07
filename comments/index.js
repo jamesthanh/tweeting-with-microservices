@@ -23,7 +23,7 @@ app.post('/tweets/:id/replies', async (req, res) => {
     const tweets = repliesByTweetId[req.params.id] || [];
     tweets.push({ id: tweetId, content, status: 'pending' });
     repliesByTweetId[req.params.id] = tweets;
-    await axios.post('http://localhost:5005/events', {
+    await axios.post('http://event-bus-srv:5005/events', {
       type: 'ReplyCreated',
       data: {
         id: tweetId,
@@ -48,7 +48,7 @@ app.post('/events', async (req, res) => {
       return reply.id === id;
     });
     reply.status = status;
-    await axios.post('http://localhost:5005/events', {
+    await axios.post('http://event-bus-srv:5005/events', {
       type: 'ReplyUpdated',
       data: {
         id,

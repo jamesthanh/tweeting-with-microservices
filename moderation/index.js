@@ -8,8 +8,8 @@ app.use(bodyParser.json());
 app.post('/events', async (req, res) => {
   const { type, data } = req.body;
   if (type === 'ReplyCreated') {
-    const status = data.content.includes('owo') ? 'rejected' : 'approved';
-    await axios.post('http://localhost:5005/events', {
+    const status = data.content.includes('bad') ? 'rejected' : 'approved';
+    await axios.post('http://event-bus-srv:5005/events', {
       type: 'ReplyModerated',
       data: {
         id: data.id,
