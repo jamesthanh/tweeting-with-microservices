@@ -10,12 +10,12 @@ app.post('/events', (req, res) => {
   const event = req.body;
   // tweet service
   axios.post('http://posts-clusterip-srv:5000/events', event);
-  // //reply services
-  // axios.post('http://localhost:5001/events', event);
-  // // query serivces
-  // axios.post('http://localhost:5002/events', event);
-  // // moderation serivces
-  // axios.post('http://localhost:5003/events', event);
+  //reply services
+  axios.post('http://comments-srv:5001/events', event);
+  // query serivces
+  axios.post('http://query-srv:5002/events', event);
+  // moderation serivces
+  axios.post('http://moderation:5003/events', event);
 
   res.send({ status: 'OK' });
 });
