@@ -22,7 +22,7 @@ app.post('/tweets', async (req, res) => {
       id,
       title,
     };
-    await axios.post('http://localhost:5005/events', {
+    await axios.post('http://event-bus-srv:5005/events', {
       type: 'TweetCreated',
       data: {
         id,
